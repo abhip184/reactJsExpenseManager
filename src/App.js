@@ -1,25 +1,26 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {BrowserRouter,Switch, Route} from 'react-router-dom'
+import Navbar from './component/layout/Navbar'
+import Dashboard from './component/dashboard/Dashboard';
+import AccountTransections from './component/account/AccountTransections';
+import SignIn from './component/auth/SignIn';
+import SignUp from './component/auth/SignUp';
+import CreateAccount from './component/account/CreateAccount';
 
 function App() {
   return (
+    <BrowserRouter>
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+   <Navbar/>
+   <Switch>
+    <Route exact path="/" component={Dashboard}></Route>
+    <Route path="/account/:id" component={AccountTransections}></Route>
+    <Route path="/signin" component={SignIn}></Route>
+    <Route path="/signup" component={SignUp}></Route>
+    <Route path="/create" component={CreateAccount}></Route>
+   </Switch>
     </div>
+    </BrowserRouter>
   );
 }
 
