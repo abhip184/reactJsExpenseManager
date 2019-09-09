@@ -12,7 +12,7 @@ function setlocalStorage(user) {
 export const signUpUser = user => {
   return (dispatch) => {
     axios
-      .post("http://localhost:8080/users/signup", user)
+      .post("http://192.168.0.125:8000/users/signup", user)
       .then(result => {
         const user = result.data.userData;
         setlocalStorage(user);
@@ -31,7 +31,7 @@ export const signUpUser = user => {
 export const singInUser = user => {
   return (dispatch) => {
     axios
-      .post("http://localhost:8080/users/login", user)
+      .post("http://192.168.0.125:8000/users/login", user)
       .then(result => {
         const user = result.data.userData;
         setlocalStorage(user);

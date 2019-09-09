@@ -6,7 +6,7 @@ axios.defaults.headers.common["Authorization"] = `bearer ${token}`;
 export const getTransections = id => {
   return dispatch => {
     axios
-      .get("http://localhost:8080/transections/" + id)
+      .get("http://192.168.0.125:8000/transections/" + id)
       .then(result => {
         const transections = result.data.transections;
         const account = result.data.account;
@@ -26,7 +26,7 @@ export const getBalance = id => {
   return dispatch => {
       
     axios
-      .get("http://localhost:8080/transections/balance/" + id)
+      .get("http://192.168.0.125:8000/transections/balance/" + id)
       .then(result => {
           console.log("checkEdit",id)
         const balance = result.data.balance;
@@ -44,7 +44,7 @@ export const addFriend = (friendEmail, id) => {
   return dispatch => {
     const email = { friendEmail: friendEmail };
     axios
-      .patch("http://localhost:8080/accounts/addFriend/" + id, email)
+      .patch("http://192.168.0.125:8000/accounts/addFriend/" + id, email)
       .then(result => {
         window.M.toast({ html: result.data.message });
         dispatch({ type: "ADD_FRIEND", friendEmail });
@@ -59,7 +59,7 @@ export const addFriend = (friendEmail, id) => {
 export const editTransection = (id, newCategory, newAmount,accId) => {
   return dispatch => {
     axios
-      .patch("http://localhost:8080/transections/" + id, [
+      .patch("http://192.168.0.125:8000/transections/" + id, [
         { propName: "category", value: newCategory },
         { propName: "amount", value: newAmount }
       ])
@@ -89,7 +89,7 @@ export const deleteTransection = (id, accId) => {
     }).then(result => {
       if (result.value) {
         axios
-          .delete("http://localhost:8080/transections/" + id)
+          .delete("http://192.168.0.125:8000/transections/" + id)
           .then(result => {
             window.M.toast({ html: result.data.message, displayLength: 1000 });
             dispatch({ type: "DELETE_TRANSECTION", id });
@@ -131,7 +131,7 @@ export const addTransections = id => {
         preConfirm: async choosenType => {
           if (choosenType === "transfer") {
             const result = await axios.get(
-              "http://localhost:8080/accounts/" + id
+              "http://192.168.0.125:8000/accounts/" + id
             );
             const emailOptions = {};
             const invitesEmail = result.data.data.invites;
@@ -158,7 +158,7 @@ export const addTransections = id => {
               },
               preConfirm: async choosenEmail => {
                 const result = await axios.get(
-                  "http://localhost:8080/accounts/email/" + choosenEmail
+                  "http://192.168.0.125:8000/accounts/email/" + choosenEmail
                 );
                 const accountOptions = {};
                 const invitesAcounts = result.data.data;
@@ -211,7 +211,7 @@ export const addTransections = id => {
                       };
                       const result = await axios
                         .post(
-                          "http://localhost:8080/transections",
+                          "http://192.168.0.125:8000/transections",
                           TransectionData
                         )
                         .catch(err => {
@@ -266,7 +266,7 @@ export const addTransections = id => {
                     accountId: id
                   };
                   axios
-                    .post("http://localhost:8080/transections", TransectionData)
+                    .post("http://192.168.0.125:8000/transections", TransectionData)
                     .then(resultData => {
                       const newTransection = resultData.data.savedTransection;
                       Swal.fire({

@@ -7,7 +7,7 @@ export const createAccount = account => {
   return (dispatch) => {
     //make async db call
     axios
-      .post("http://localhost:8080/accounts", account)
+      .post("http://192.168.0.125:8000/accounts", account)
       .then(result => {
         const newAccount = result.data.createdAcccount;
         dispatch({ type: "CREATE_ACCOUNT", newAccount });
@@ -30,7 +30,7 @@ export const createAccount = account => {
 export const getAccounts = () => {
   return (dispatch) => {
     axios
-      .get("http://localhost:8080/accounts")
+      .get("http://192.168.0.125:8000/accounts")
       .then(result => {
         const allAccounts = result.data.data;
         dispatch({ type: "GET_ACCOUNTS", allAccounts });
@@ -45,7 +45,7 @@ export const getAccounts = () => {
 export const deleteAccount = id => {
   return (dispatch) => {
     axios
-      .delete("http://localhost:8080/accounts/" + id)
+      .delete("http://192.168.0.125:8000/accounts/" + id)
       .then(result => {
         window.M.toast({ html: result.data.message, displayLength: 1000 });
         dispatch({ type: "DELETE_ACCOUNT", id });
@@ -60,7 +60,7 @@ export const deleteAccount = id => {
 export const editAccount = (id, newAccountName) => {
   return (dispatch) => {
     axios
-      .patch("http://localhost:8080/accounts/" + id, [
+      .patch("http://192.168.0.125:8000/accounts/" + id, [
         { propName: "accountName", value: newAccountName }
       ])
       .then(result => {
