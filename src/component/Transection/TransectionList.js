@@ -77,16 +77,14 @@ class TransectionList extends Component {
       <div className="col s12 m12">
         <div className="card-panel indigo lighten-4 center-align">
           <span className="indigo-text ">
-            <i className="material-icons large center-align">
-              sentiment_dissatisfied
-            </i>
+          <div class="timer-loader">Loading…</div>
             <br></br>
             You have no transections
           </span>
         </div>
       </div>
     );
-
+    
     const ownerInfo = account.owner ? (
       <div className="card-panel hoverable">
         <sub className="">Owner Information</sub>

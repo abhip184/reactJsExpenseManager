@@ -2,7 +2,6 @@ import React from "react";
 import { Router, Switch, Route } from "react-router-dom";
 import Navbar from "./component/layout/Navbar";
 import Dashboard from "./component/dashboard/Dashboard";
-import AccountTransections from "./component/account/AccountTransections";
 import SignIn from "./component/auth/SignIn";
 import SignUp from "./component/auth/SignUp";
 import Index from "./component/dashboard/Index";
@@ -19,7 +18,6 @@ function App() {
         <Switch>
           <Route exact path="/" component={Index}></Route>
           <Route exact path="/dashboard" component={Dashboard}></Route>
-          <Route path="/account/:id" component={AccountTransections}></Route>
           <Route path="/signin" component={SignIn}></Route>
           <Route path="/signup" component={SignUp}></Route>
           <Route path="/create" component={CreateAccount}></Route>

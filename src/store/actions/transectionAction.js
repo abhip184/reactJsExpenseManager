@@ -6,7 +6,7 @@ axios.defaults.headers.common["Authorization"] = `bearer ${token}`;
 export const getTransections = id => {
   return dispatch => {
     axios
-      .get("http://localhost:8080/transections/test/" + id)
+      .get("http://localhost:8080/transections/" + id)
       .then(result => {
         const transections = result.data.transections;
         const account = result.data.account;
